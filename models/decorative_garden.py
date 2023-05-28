@@ -12,12 +12,11 @@ class DecorativeGarden(Garden):
 
     # pylint: disable = line-too-long
     def __init__(self, area: int = None, number_of_flowers: int = None, number_of_flowerbeds: int = None):
-        Garden.__init__(self, area, number_of_flowers)
+        super().__init__(area, number_of_flowers, ["Willow-leaved weeping willow", "Star anise"])
         self.number_of_flowerbeds = number_of_flowerbeds
 
     def __str__(self):
-        return f"DecorativeGarden(area={self.area}, number_of_flowers={self.number_of_flowers}, " \
-               f"number_of_flowerbeds={self.number_of_flowerbeds})"
+        return f"DecorativeGarden(number_of_flowerbeds={self.number_of_flowerbeds}, {super().__str__()}"
 
     def has_orchard(self) -> bool:
         """

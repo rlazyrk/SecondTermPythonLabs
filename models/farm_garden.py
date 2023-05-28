@@ -13,13 +13,13 @@ class FarmGarden(Garden):
     # pylint: disable = line-too-long
     def __init__(self, area: int = None, number_of_flowers: int = None, number_of_tree: int = None,
                  number_of_crops: int = None):
-        Garden.__init__(self, area, number_of_flowers)
+        super().__init__(area, number_of_flowers, ["Tulip", "Rose"])
         self.number_of_tree = number_of_tree
         self.number_of_crops = number_of_crops
 
     def __str__(self):
-        return f"FarmGarden(area={self.area}, number_of_flowers={self.number_of_flowers}, " \
-               f"number_of_tree={self.number_of_tree}, number_of_crops={self.number_of_crops})"
+        return f"FarmGarden(number_of_crops={self.number_of_crops}, number_of_tree={self.number_of_tree}," \
+               f" {super().__str__()} "
 
     def has_orchard(self):
         """
