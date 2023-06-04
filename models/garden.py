@@ -1,8 +1,7 @@
 """
 Below is class for first lab
 """
-from abc import ABC
-from abc import abstractmethod
+from abc import ABC, abstractmethod
 
 
 class Garden(ABC):
@@ -10,19 +9,22 @@ class Garden(ABC):
     Garden class for first python lab
     """
 
-    def __init__(self, area, number_of_flowers):
+    def __init__(self, area, number_of_flowers, types_of_flower):
         self.area = area
         self.number_of_flowers = number_of_flowers
+        self.type_of_flowers = types_of_flower
 
     def __str__(self):
-        return f"{self.area}, {self.number_of_flowers}"
+        return f"area={self.area}, number_of_flowers={self.number_of_flowers}" \
+               f", types_of_flowers={self.type_of_flowers}"
 
-    def plant_flower(self, number_to_plant: int) -> None:
+    def plant_flower(self, number_to_plant: int) -> int:
         """
         :param number_to_plant:
         :return: None
         """
         self.number_of_flowers = self.number_of_flowers + number_to_plant
+        return self.number_of_flowers
 
     def pluck_flower(self, number_to_remove: int) -> None:
         """
@@ -44,3 +46,14 @@ class Garden(ABC):
         """
         :return:
         """
+
+    def dict_by_type(self, type_of_attribute):
+        """
+        :param type_of_attribute: 
+        :return:
+        """
+        # pylint: disable = line-too-long
+        return dict({key: value for key, value in self.__dict__.items() if isinstance(value, type_of_attribute)})
+
+    def __iter__(self):
+        return iter(self.type_of_flowers)
