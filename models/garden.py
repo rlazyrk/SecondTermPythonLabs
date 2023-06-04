@@ -2,6 +2,8 @@
 Below is class for first lab
 """
 from abc import ABC, abstractmethod
+from decorators.expeption_logger import exception_logger
+from exeption.negative_number_of_flowers import NegativeFlowersException
 
 
 class Garden(ABC):
@@ -26,6 +28,7 @@ class Garden(ABC):
         self.number_of_flowers = self.number_of_flowers + number_to_plant
         return self.number_of_flowers
 
+    @exception_logger(NegativeFlowersException, mode="log")
     def pluck_flower(self, number_to_remove: int) -> None:
         """
         :param number_to_remove:
@@ -34,6 +37,8 @@ class Garden(ABC):
         if self.number_of_flowers <= number_to_remove:
             self.number_of_flowers = 0
         self.number_of_flowers = self.number_of_flowers - number_to_remove
+        if self.number_of_flowers < 0:
+            raise NegativeFlowersException
 
     @abstractmethod
     def has_orchard(self):

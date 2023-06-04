@@ -1,6 +1,7 @@
 """
 Main file for tests
 """
+import range as range
 
 # pylint: disable = import-error
 from managers.garden_manager import GardenManager
@@ -11,7 +12,7 @@ from models.decorative_garden import DecorativeGarden
 from models.university_garden import UniversityGarden
 
 # pylint: disable = line-too-long
-list_of_gardens = [BotanicGarden(10, 23, 13), FarmGarden(25, 102, 44, 342), UniversityGarden(27, 444, 325),
+list_of_gardens = [BotanicGarden(10, -19, 13), FarmGarden(25, 102, 44, 342), UniversityGarden(27, 444, 325),
                    DecorativeGarden(20, 45, 55)]
 
 manager = GardenManager(list_of_gardens)
@@ -36,6 +37,5 @@ for i in manager.get_all_flowers():
 
 print(manager.check_flower_count(100))
 
-set_manager = GardenSM(manager)
-for i in range(len(set_manager)):
-    print(set_manager[i])
+list_of_gardens[0].pluck_flower(100)
+print(list_of_gardens[0])
